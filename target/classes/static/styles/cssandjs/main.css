@@ -1,0 +1,17 @@
+td {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+tr {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+p {
+    font-family: sans-serif;
+}
+
+ .error {
+     color: red;
+ }

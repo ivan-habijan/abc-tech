@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Management System</title>
+    <link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Account management</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/accounts}">Account list</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <h1>Accounts</h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <a th:href="@{/accounts/add}" class="btn btn-primary btn-sm mb-3">Add Account</a>
+        </div>
+    </div>
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th>Racun ID</th>
+            <th>IBAN</th>
+            <th>Tip racuna</th>
+            <th>Valuta</th>
+            <th>Klijent ID</th>
+            <th>Datum otvaranja</th>
+            <th>Datum zatvaranja</th>
+            <th>Manage</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="account : ${accounts}">
+            <td th:text="${account.racunId}"></td>
+            <td th:text="${account.iban}"></td>
+            <td th:text="${account.tip}"></td>
+            <td th:text="${account.valuta}"></td>
+            <td th:text="${account.klijentId}"></td>
+            <td th:text="${account.datumOtvaranja}"></td>
+            <td th:text="${account.datumZatvaranja}"></td>
+            <td>
+                <a th:href="@{/accounts/edit/{id}(id=${account.racunId})}" class="btn btn-primary btn-sm">Edit</a>
+                <a th:href="@{/accounts/delete/{id}(id=${account.racunId})}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
